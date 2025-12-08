@@ -1,0 +1,425 @@
+/* assets/css/style.css - Estilo Dashboard Moderno */
+
+:root {
+  --cor-fundo: #f8f9fa;
+  --cor-sidebar: #ffffff;
+  --cor-principal: #007bff;
+  --cor-principal-hover: #0056b3;
+  --cor-texto-principal: #212529;
+  --cor-texto-secundario: #6c757d;
+  --cor-borda: #dee2e6;
+  --cor-sombra: rgba(0, 0, 0, 0.05);
+  --cor-disponivel: #28a745;
+  --cor-emprestado: #ffc107;
+  --cor-atrasado: #dc3545;
+  --cor-hoje: #fd7e14;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  /* Fundo com gradiente sutil para um visual mais moderno */
+  background: linear-gradient(135deg, #fdfdff 0%, #f8f9fa 100%);
+  color: var(--cor-texto-principal);
+  margin: 0;
+}
+
+/* --- Layout Principal do Dashboard --- */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background-color: var(--cor-sidebar);
+  padding: 2rem;
+  border-right: 1px solid var(--cor-borda);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header h2 {
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+}
+
+.form-section {
+  flex-grow: 1;
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+/* --- Cabeçalho da Área Principal --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#ordenar-livros {
+  padding: 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--cor-sidebar);
+  cursor: pointer;
+}
+
+#busca-livro {
+  width: 300px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#busca-livro:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Formulário na Sidebar --- */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+input[type='text'],
+input[type='number'] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.btn-principal {
+  cursor: pointer;
+  background-color: var(--cor-principal);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-principal:hover {
+  background-color: var(--cor-principal-hover);
+}
+
+/* --- Lista de Livros (Cards) --- */
+#lista-livros {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+#lista-livros li {
+  background-color: var(--cor-sidebar);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px var(--cor-sombra);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+#lista-livros li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
+}
+
+#lista-livros li.emprestado {
+  flex-grow: 1;
+}
+
+.info-principal {
+  margin-bottom: 1rem;
+}
+
+.titulo-autor {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.titulo-autor .ano {
+  font-weight: 400;
+  color: var(--cor-texto-secundario);
+}
+
+.estante {
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario);
+}
+
+.acoes-livro {
+  margin-top: auto; /* Empurra para o final do card */
+  padding-top: 1rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.acoes-livro .botoes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-acao {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-editar {
+  background-color: var(--cor-texto-secundario);
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #5a6268;
+}
+
+.btn-excluir {
+  background-color: var(--cor-atrasado);
+  color: white;
+}
+
+.btn-excluir:hover {
+  background-color: #c82333;
+}
+
+.btn-emprestar {
+  background-color: var(--cor-principal);
+  color: white;
+}
+.btn-emprestar:hover {
+  background-color: var(--cor-principal-hover);
+}
+
+.btn-devolver {
+  background-color: var(--cor-disponivel);
+  color: white;
+}
+.btn-devolver:hover {
+  background-color: #218838;
+}
+
+/* --- Status do Livro --- */
+.status-livro,
+.info-emprestimo {
+  margin-bottom: 1rem;
+}
+
+.status-livro.disponivel {
+  color: var(--cor-disponivel);
+  font-weight: bold;
+}
+
+.info-emprestimo span {
+  display: block;
+  font-size: 0.9em;
+  color: var(--cor-texto-secundario);
+}
+
+.status-emprestimo {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: white;
+  background-color: var(--cor-emprestado);
+}
+
+.status-emprestimo.atrasado {
+  background-color: var(--cor-atrasado);
+}
+.status-emprestimo.hoje {
+  background-color: var(--cor-hoje);
+}
+
+/* --- Rodapé na Sidebar --- */
+footer {
+  text-align: center; /* Centraliza o texto */
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.8rem;
+  color: var(--cor-texto-secundario);
+}
+
+/* --- Mensagem de Status --- */
+#mensagem-status {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+#mensagem-status.sucesso {
+  background-color: #d4edda;
+  color: #155724;
+}
+#mensagem-status.erro {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* --- Estilos do Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  transform: translateY(-50px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.visible .modal-content {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #aaa;
+}
+
+/* --- Histórico Modal --- */
+#history-book-title {
+  margin-top: 0;
+}
+
+/* --- Seção de Gerenciamento de Dados --- */
+.dados-section {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.dados-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.botoes-dados-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-secundario {
+  flex-grow: 1;
+  background-color: #f1f3f5;
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-borda);
+}
+.btn-secundario:hover {
+  background-color: #e9ecef;
+}
+
+/* --- Controles de Paginação --- */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-sidebar);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-btn.active {
+  background-color: var(--cor-principal);
+  color: white;
+  border-color: var(--cor-principal);
+}
+
+.pagination-btn:not(:disabled):hover {
+  background-color: #e9ecef;
+}
+.pagination-btn.active:hover {
+  background-color: var(--cor-principal-hover);
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Biblioteca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>📚 Biblioteca</h2>
+        </div>
+        <section class="form-section">
+          <h3>Adicionar Livro</h3>
+          <form id="form-adicionar-livro">
+            <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" id="titulo" name="titulo" required />
+            </div>
+            <div class="form-group">
+              <label for="autor">Autor</label>
+              <input type="text" id="autor" name="autor" required />
+            </div>
+            <div class="form-group">
+              <label for="ano">Ano</label>
+              <input type="number" id="ano" name="ano" />
+            </div>
+            <div class="form-group">
+              <label for="estante">Estante</label>
+              <input
+                type="text"
+                id="estante"
+                name="estante"
+                placeholder="Ex: Corredor A, Prateleira 3"
+              />
+            </div>
+            <button type="submit" class="btn-principal">Adicionar Livro</button>
+          </form>
+          <div id="mensagem-status"></div>
+        </section>
+        <section class="dados-section">
+          <h3>Gerenciar Dados</h3>
+          <div class="botoes-dados-container">
+            <button id="btn-importar" class="btn-secundario">Importar</button>
+            <button id="btn-exportar-json" class="btn-secundario">
+              Exportar JSON
+            </button>
+            <button id="btn-exportar-csv" class="btn-secundario">
+              Exportar CSV
+            </button>
+          </div>
+          <input
+            type="file"
+            id="import-file-input"
+            accept=".json"
+            style="display: none"
+          />
+        </section>
+        <footer>
+          <p>&copy; 2024 Luiz Sa. Todos os direitos reservados.</p>
+        </footer>
+      </aside>
+
+      <main>
+        <header class="main-header">
+          <h1>Acervo de Livros</h1>
+          <div class="header-controls">
+            <select id="ordenar-livros" aria-label="Ordenar livros por">
+              <option value="titulo">Ordenar por Título (A-Z)</option>
+              <option value="autor">Ordenar por Autor (A-Z)</option>
+              <option value="ano_desc">Ano (Mais Recente)</option>
+              <option value="ano_asc">Ano (Mais Antigo)</option>
+            </select>
+            <input
+              type="search"
+              id="busca-livro"
+              placeholder="🔎 Buscar por título ou autor..."
+            />
+          </div>
+        </header>
+        <ul id="lista-livros">
+          <!-- Os livros serão inseridos aqui pelo JavaScript -->
+          <li>Carregando livros...</li>
+        </ul>
+        <div id="pagination-controls" class="pagination-container"></div>
+      </main>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="edit-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2>Editar Livro</h2>
+        <form id="form-editar-livro">
+          <input type="hidden" id="edit-livro-id" />
+          <div class="form-group">
+            <label for="edit-titulo">Título</label>
+            <input type="text" id="edit-titulo" required />
+          </div>
+          <div class="form-group">
+            <label for="edit-autor">Autor</label>
+            <input type="text" id="edit-autor" required />
+          </div>
+          <div class="form-group">
+            <label for="edit-ano">Ano</label>
+            <input type="number" id="edit-ano" />
+          </div>
+          <div class="form-group">
+            <label for="edit-estante">Estante</label>
+            <input type="text" id="edit-estante" />
+          </div>
+          <button type="submit" class="btn-principal">Salvar Alterações</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Histórico de Empréstimos -->
+    <div id="history-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2>Histórico de Empréstimos</h2>
+        <h3 id="history-book-title"></h3>
+        <ul id="history-list"></ul>
+      </div>
+    </div>
+
+    <!-- Inclui nosso JavaScript no final do body -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

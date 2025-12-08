@@ -1,0 +1,17 @@
+# Ignorar a pasta de dependências do Composer (boa prática para projetos PHP)
+/vendor/
+
+# Ignorar o arquivo de configuração local.
+# O arquivo config.example.php será enviado como um modelo.
+config.php
+
+
+
+#ignorar a pasta .idea
+/.idea/
+
+# Ignorar pasta .vscode
+/.vscode/
+
+# Ignorar o setup_database
+/setup_database.php/
